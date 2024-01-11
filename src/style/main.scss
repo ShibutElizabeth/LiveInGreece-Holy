@@ -1,0 +1,111 @@
+$darker: #2E3233;
+$cta: #EEFF33;
+$light: #DAE6E6;
+$lightest: #F6FBFB;
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: overlay;
+    font-family: Helvetica;
+    scroll-behavior: smooth;
+    // overscroll-behavior: none;
+
+    a{
+        text-decoration: none;
+        margin: 0;
+        padding: 0;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    h1, h2, h3, h4, h5, p{
+        margin: 0;
+        padding: 0;
+        cursor: default;
+    }
+    /* width */
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+  
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #211f2fdc;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+  
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #211f2f;
+        transition: all 0.3s ease;
+    }
+}
+
+main {
+    position: relative;
+    background-color: $darker;
+    width: 100vw;
+    height: 100vh;
+}
+
+.navbar-box {
+    position: fixed;
+    z-index: 100;
+    background-color: transparent;
+    color: $lightest;
+    width: 100vw;
+    height: fit-content;
+    padding: 24px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .navbar{
+        width: 95.56vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        &__logo{
+            text-transform: uppercase;
+        }
+
+        &__links{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 47.8vw;
+    
+            &-block{
+                display: flex;
+                flex-direction: row;
+                justify-items: flex-start;
+                align-items: center;
+                gap: 1.67vw;
+
+                .item{
+                    font-family: Helvetica;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 26px;
+                    
+                    &_upper{
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
+}

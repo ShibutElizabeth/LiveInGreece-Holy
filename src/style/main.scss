@@ -235,11 +235,15 @@ section {
                 &__name{
                     width: 23.47vw;
                     position: relative;
+                    height: 46px;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 8px;
                     
                     &::after{
                         content: '';
                         width: 100%;
-                        height: 46px;
+                        height: 100%;
                         position: absolute;
                         top: 0;
                         left: 0;

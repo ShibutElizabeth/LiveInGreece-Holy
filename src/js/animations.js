@@ -4,7 +4,7 @@ import debounce from './debounce';
 export class Animations {
     constructor() {
         this.circles = document.querySelectorAll('.js-circle');
-        this.circleCovers = document.querySelectorAll('.js-circle-cover');
+        this.circleCovers = document.querySelectorAll('.js-circle-mask');
         this.cursor = document.querySelector('#cursor');
         this.initCursor();
         this.initCircles();
@@ -25,13 +25,13 @@ export class Animations {
 
     initCircles() {
         this.circleCovers.forEach((cover) => {
-            // gsap.set(cover, {scale: 0});
+            gsap.set(cover, {scale: 0});
         })
 
         this.circles.forEach((circle, i) => {
-            // this.setCircleHover(circle, i);
+            this.setCircleHover(circle, i);
         })
-        this.setCircleHover(this.circles[0]);
+        // this.setCircleHover(this.circles[0]);
     }
 
     initMask(){
@@ -49,10 +49,11 @@ export class Animations {
     setCircleHover(item, i) {
         const that = this;
         const self = item;
-        const cover = '#circleMask'// this.circleCovers[i];
+        const cover = this.circleCovers[i];
         let hover = false;
 
         const onHover = (x, y) => {
+            console.log(cover)
             gsap.to(cover, {
                 scale: 1,
                 // transformOrigin: `${x + '% ' + y + '%'}`,

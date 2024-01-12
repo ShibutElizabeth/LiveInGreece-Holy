@@ -1,14 +1,18 @@
 import gsap from "gsap";
 import debounce from './debounce';
+import * as colors from './variables';
 
 export class Animations {
     constructor() {
+        console.log(colors)
         this.circles = document.querySelectorAll('.js-circle');
         this.circleCovers = document.querySelectorAll('.js-circle-mask');
+        this.circleArrows = document.querySelectorAll('.js-circle-arrow');
+        this.oppItems = document.querySelectorAll('.js-opp-item');
         this.cursor = document.querySelector('#cursor');
         this.initCursor();
         this.initCircles();
-        // this.initMask();
+        this.initOppItems();
     }
 
     initCursor() {
@@ -17,63 +21,70 @@ export class Animations {
             gsap.to(cursor, {
                 x: e.clientX,
                 y: e.clientY,
-                ease: 'power1.easeInOut'
+                ease: 'power1.in',
+                duration: 0.01,
             });
         }
+
         window.addEventListener('mousemove', cursorOnMouseMove);
     }
 
     initCircles() {
-        this.circleCovers.forEach((cover) => {
-            gsap.set(cover, {scale: 0});
-        })
-
-        this.circles.forEach((circle, i) => {
-            this.setCircleHover(circle, i);
-        })
-        // this.setCircleHover(this.circles[0]);
-    }
-
-    initMask(){
-        gsap.fromTo("#circleMask", {
-            scale:0
-        }, {
-            scale: 1, 
-            repeat: -1, 
-            repeatDelay: 1, 
-            yoyo:true,
-            duration: 4,
-        })
-    }
-
-    setCircleHover(item, i) {
-        const that = this;
-        const self = item;
-        const cover = this.circleCovers[i];
-        let hover = false;
-
-        const onHover = (x, y) => {
-            console.log(cover)
+        const onHover = (i) => {
+            const cover = this.circleCovers[i];
             gsap.to(cover, {
                 scale: 1,
-                // transformOrigin: `${x + '% ' + y + '%'}`,
                 duration: 0.3,
                 ease: 'power1.easeIn'
             });
 
-            gsap.to(that.cursor, {backgroundColor: '#2E3233'});
+            gsap.to(this.cursor, {backgroundColor: colors.darker}); 
         };
 
-        const onLeave = (x, y) => {
+        const onLeave = (i) => {
+            const cover = this.circleCovers[i];
             gsap.to(cover, {
                 scale: 0,
-                // transformOrigin: `${x + '% ' + y + '%'}`,
                 duration: 0.3,
                 ease: 'power1.easeIn'
             });
 
-            gsap.to(that.cursor, {backgroundColor: '#DAE6E6'});
+            gsap.to(this.cursor, {backgroundColor: colors.light});
         };
+
+        const rotateOnMouseMove = (el, x, y) => {
+            const angle = 180 + Math.atan2(y, x) * (180 / Math.PI);
+            el.style.transform = `scale(0.2) rotate(${angle}deg)`;
+        }
+
+        this.circleCovers.forEach((cover) => {
+            gsap.set(cover, {scale: 0});
+        });
+
+        this.circles.forEach((circle, i) => {
+            this.setCircleHover(circle, i, onHover, onLeave, rotateOnMouseMove);
+        });
+    }
+
+    initOppItems(){
+        const onHover = (i) => {
+            gsap.to(this.cursor, {backgroundColor: colors.cta});
+        };
+
+        const onLeave = (i) => {
+            gsap.to(this.cursor, {backgroundColor: colors.light});
+        };
+
+        this.oppItems.forEach((item, i) => {
+            item.addEventListener('mouseenter', onHover);
+            item.addEventListener('mouseleave', onLeave);
+        });
+    }
+
+    setCircleHover(item, i, onHover, onLeave, onMouseMove) {
+        const that = this;
+        const self = item;
+        let hover = false;
 
         window.addEventListener("mousemove", (e) => {
             // cursor
@@ -87,9 +98,12 @@ export class Animations {
             const {width} = offset;
             const {height} = offset;
 
+            const wHalf = width / 2;
+            const hHalf = height / 2;
+            
             const elPos = {
-                x: offset.left + width / 2,
-                y: offset.top + height / 2
+                x: offset.left + wHalf,
+                y: offset.top + hHalf
             };
 
             // comparaison
@@ -102,21 +116,25 @@ export class Animations {
             // mutex hover
             let mutHover = false;
 
+            // arrow rotation
+            if(onMouseMove) onMouseMove(that.circleArrows[i], x, y);
+
             // anim
-            if (dist < width * 0.5) {
+            if (dist < width * 0.51) {
                 mutHover = true;
                 if (!hover) {
                     hover = true;
                 }
-                debounce(onHover(x + width/2, y + height/2), 100);
+                debounce(onHover(i), 100);
             }
 
             // reset
             if (!mutHover && hover) {
-                debounce(onLeave(x + width/2, y + height/2), 100);
+                debounce(onLeave(i), 100);
                 hover = false;
             }
         });
     };
 
+    
 }

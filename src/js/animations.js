@@ -4,7 +4,7 @@ import * as colors from './variables';
 
 export class Animations {
     constructor() {
-        console.log(colors)
+        console.log(colors);
         this.circles = document.querySelectorAll('.js-circle');
         this.circleCovers = document.querySelectorAll('.js-circle-mask');
         this.circleArrows = document.querySelectorAll('.js-circle-arrow');
@@ -52,9 +52,23 @@ export class Animations {
             gsap.to(this.cursor, {backgroundColor: colors.light});
         };
 
-        const rotateOnMouseMove = (el, x, y) => {
+        const rotateOnMouseMove = (i, x, y) => {
+            const arrow = this.circleArrows[i];
+            const cover = this.circleCovers[i];
             const angle = 180 + Math.atan2(y, x) * (180 / Math.PI);
-            el.style.transform = `scale(0.2) rotate(${angle}deg)`;
+            arrow.style.transform = `scale(0.2) rotate(${angle}deg)`;
+
+            // gsap.to(cover, {
+            //     x: x * 0.15,
+            //     y: y * 0.15,
+            //     duration: 0.1,
+            // });
+            // gsap.to(arrow, {
+            //     x: x * 0.15,
+            //     y: y * 0.15,
+            //     scale: 0.2,
+            //     duration: 0.1,
+            // });
         }
 
         this.circleCovers.forEach((cover) => {
@@ -67,11 +81,11 @@ export class Animations {
     }
 
     initOppItems(){
-        const onHover = (i) => {
+        const onHover = () => {
             gsap.to(this.cursor, {backgroundColor: colors.cta});
         };
 
-        const onLeave = (i) => {
+        const onLeave = () => {
             gsap.to(this.cursor, {backgroundColor: colors.light});
         };
 
@@ -117,7 +131,7 @@ export class Animations {
             let mutHover = false;
 
             // arrow rotation
-            if(onMouseMove) onMouseMove(that.circleArrows[i], x, y);
+            if(onMouseMove) onMouseMove(i, x, y);
 
             // anim
             if (dist < width * 0.51) {

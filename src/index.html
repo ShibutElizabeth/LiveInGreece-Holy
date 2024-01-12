@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LiveInGreece</title>
         <link rel="stylesheet" href="./style/main.scss">
     </head>
@@ -33,20 +35,35 @@
                         </div>
                     </div>
                     <div class="rect">
-                        <div class="rect__circle">
+                        <div class="rect__circle js-circle">
                             <img src="../src/static/Rectangle1.png" alt=""/>
+                            <svg id="demo" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 80" style="position: absolute; left: 0; top: 0;">
+                                <defs>
+                                <mask id="theMask">
+                                    <circle  id="circleMask" cx="40" cy="40" r="40"  fill="yellow"/>
+                                </mask>
+                                </defs> 
+                                <g id="toBeRevealed" mask="url(#theMask)">
+                                    <circle  id="circleMask" cx="40" cy="40" r="40"  fill="yellow"/>
+                                    <path id="arrow" d="M39.064 36.52H78.896V44.528H39.064L14.312 44.216L36.88 70.944H27L1 40.576L27 10H36.776L14.104 36.832L39.064 36.52Z" fill="#2E3233" style="transform: scale(0.2) translate(12vw, 21vh);"/>
+                                </g>
+                            </svg>                        
                         </div>
                     </div>
                     <div class="rect">
-                        <div class="rect__circle">
+                        <div class="rect__circle js-circle">
                             <img src="../src/static/Rectangle2.png" alt=""/>
+                            <div class="rect__circle-cover js-circle-cover"></div>
+                            <img class="rect__circle-arrow" src="../src/static/Arrow.svg" alt=""/>
                         </div>
                     </div>
                 </div>
                 <div class="ideas__row">
                     <div class="rect">
-                        <div class="rect__circle">
+                        <div class="rect__circle js-circle">
                             <img src="../src/static/Rectangle3.png" alt=""/>
+                            <div class="rect__circle-cover js-circle-cover"></div>
+                            <img class="rect__circle-arrow" src="../src/static/Arrow.svg" alt=""/>
                         </div>
                     </div>
                     <div class="rect">
@@ -65,8 +82,10 @@
                         </div>
                     </div>
                     <div class="rect">
-                        <div class="rect__circle">
+                        <div class="rect__circle js-circle">
                             <img src="../src/static/Rectangle4.png" alt=""/>
+                            <div class="rect__circle-cover js-circle-cover"></div>
+                            <img class="rect__circle-arrow" src="../src/static/Arrow.svg" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -110,6 +129,7 @@
                 </div>
             </section>
         </main>
+        <div id="cursor" class="cursor"></div>
         <script type="module" src="../src/js/app.js"></script>
     </body>
 </html>

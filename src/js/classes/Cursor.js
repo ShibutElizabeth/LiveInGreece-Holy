@@ -1,4 +1,4 @@
-import gsap from "gsap";
+import gsap from "gsap/all";
 
 export class Cursor{
     constructor(){

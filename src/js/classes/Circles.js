@@ -1,4 +1,4 @@
-import gsap from "gsap";
+import gsap from "gsap/all";
 import debounce from '../lib/debounce';
 import * as colors from '../lib/variables';
 

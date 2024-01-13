@@ -1,18 +1,18 @@
-import gsap from "gsap";
-import * as colors from '../variables';
+import * as colors from '../lib/variables';
 
-export class Opportunities{
+export class Links{
     constructor(_cursor){
-        this.items = document.querySelectorAll('.js-opp-item');
+        this.items = document.querySelectorAll('.js-link-item');
         this.cursor = _cursor;
+        console.log(this.items)
     }
 
     onHover = () => {
-        gsap.to(this.cursor, {backgroundColor: colors.cta});
+        this.cursor.changeColor(colors.cta);
     }
 
     onLeave = () => {
-        gsap.to(this.cursor, {backgroundColor: colors.light});
+        this.cursor.changeColor(colors.light);
     }
 
     addListeners = () => {

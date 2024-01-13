@@ -1,13 +1,15 @@
 import gsap from "gsap";
-import debounce from '../debounce';
-import * as colors from '../variables';
+import debounce from '../lib/debounce';
+import * as colors from '../lib/variables';
 
 export class Circles {
     constructor(_cursor) {
+        console.log(colors);
         this.items = document.querySelectorAll('.js-circle');
         this.covers = document.querySelectorAll('.js-circle-mask');
         this.arrows = document.querySelectorAll('.js-circle-arrow');
         this.cursor = _cursor;
+        this.remove = false;
         this.covers.forEach((cover) => {
             gsap.set(cover, {scale: 0});
         });
@@ -21,7 +23,7 @@ export class Circles {
             ease: 'power1.easeIn'
         });
 
-        gsap.to(cursor, {backgroundColor: colors.darker}); 
+        cursor.changeColor(colors.darker);
     };
 
     onLeave = (module) => {
@@ -32,7 +34,7 @@ export class Circles {
             ease: 'power1.easeIn'
         });
 
-        gsap.to(cursor, {backgroundColor: colors.light});
+        cursor.changeColor(colors.light);
     };
 
     rotateOnMouseMove = (module, x, y) => {
@@ -49,7 +51,8 @@ export class Circles {
         });
     }
 
-    addListeners() {
+    addListeners = () => {
+        this.remove = false;
         this.items.forEach((item, i) => {
             const module = {
                 item: item,
@@ -57,15 +60,23 @@ export class Circles {
                 arrow: this.arrows[i],
                 cursor: this.cursor
             }
-            this.setCircleHover(module, this.onHover, this.onLeave, this.rotateOnMouseMove);
+            this.itemListener(module, this.onHover, this.onLeave, this.rotateOnMouseMove);
         });
     }
 
-    setCircleHover(module, onHover, onLeave, onMouseMove) {
+    removeListeners = () => {
+        this.remove = true;
+    }
+
+    itemListener = (module, onHover, onLeave, onMouseMove) => {
         const { item } = module;
         let hover = false;
 
         const windowOnMouseMove = (e) => {
+            if(this.remove){
+                console.log('checked');
+                window.removeEventListener("mousemove", windowOnMouseMove);
+            }
             // cursor
             const mouse = {
                 x: e.clientX,
@@ -115,5 +126,7 @@ export class Circles {
         }
 
         window.addEventListener("mousemove", windowOnMouseMove);
+        
     };
+
 }

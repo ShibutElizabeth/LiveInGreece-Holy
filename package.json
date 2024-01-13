@@ -7,7 +7,7 @@
     "init": "npm run clean-dist && npm run copy-static",
     "serve": "parcel serve ./src/*.html",
     "build": "parcel build ./src/*.html",
-    "update-vars": "sass3js -f ts src/style/variables.scss src/js/variables.js"
+    "update-vars": "sass3js -f ts src/style/variables.scss src/js/lib/variables.js"
   },
   "authors": "shibutelizabeth",
   "devDependencies": {

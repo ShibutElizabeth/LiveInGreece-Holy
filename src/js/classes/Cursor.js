@@ -15,6 +15,11 @@ export class Cursor{
         });
     }
 
+    changeColor = (color) => {
+        const cursor = this.instance;
+        gsap.to(cursor, {backgroundColor: color}); 
+    }
+
     addListeners = () => {
         window.addEventListener('mousemove', this.cursorOnMouseMove.bind(this));
     }

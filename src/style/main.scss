@@ -53,6 +53,11 @@ section {
     border-radius: 50%;
     background-color: $light;
     z-index: 101;
+    border: 0.5px solid $darker;
+
+    @include phone{
+        display: none;
+    }
     // transform: translate(-50%, -50%);
 }
 
@@ -91,6 +96,12 @@ section {
 
             &:hover{
                 color: $cta;
+            }
+
+            @include tablet{
+                &:hover{
+                    color: $lightest;
+                }
             }
         }
 
@@ -132,6 +143,12 @@ section {
 
                     &:hover{
                         color: $cta;
+                    }
+
+                    @include tablet{
+                        &:hover{
+                            color: $lightest;
+                        }
                     }
                 }
             }
@@ -294,13 +311,37 @@ section {
                     align-items: center;
                     gap: 16px;
                     transition: all 0.3s ease;
+                    cursor: none;
+                    border: none;
+                    
 
                     img{
                         transition: all 0.3s ease;
+                        pointer-events: none;
+                    }
+
+                    p{
+                        pointer-events: none;
+                    }
+
+
+                    &:hover{
+                        img {
+                            transform: rotate(45deg);
+                        }
+                    }
+
+                    &:disabled{
+                        opacity: 0.3;
                     }
 
                     @include tablet{
                         font-size: 0.7rem;
+                        &:hover{
+                            img{
+                                transform: none;
+                            }
+                        }
                     }
 
                     @include phone{
@@ -309,12 +350,7 @@ section {
                         p{
                             font-size: 1.2rem;
                         }
-                    }
 
-                    &:hover{
-                        img {
-                            transform: rotate(45deg);
-                        }
                     }
                 }
             }

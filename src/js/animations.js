@@ -1,44 +1,51 @@
 import gsap from "gsap";
 import debounce from './debounce';
 import * as colors from './variables';
+import { Cursor } from "./classes/Cursor";
+import { Circles } from "./classes/Circles";
+import { Opportunities } from "./classes/Opportunities";
 
 export class Animations {
     constructor() {
         console.log(colors);
-        this.circles = document.querySelectorAll('.js-circle');
-        this.circleCovers = document.querySelectorAll('.js-circle-mask');
-        this.circleArrows = document.querySelectorAll('.js-circle-arrow');
-        this.oppItems = document.querySelectorAll('.js-opp-item');
-        this.cursor = document.querySelector('#cursor');
+        this.cursor = new Cursor();
+        this.circles = new Circles(this.cursor);
+        this.opportunities = new Opportunities(this.cursor);
         this.isMobile = false;
         this.windowOnResize();
-        this.initCursor();
-        this.initCircles();
-        this.initOppItems();
     }
 
     windowOnResize() {
         const isMobileDevice = () => {
             this.isMobile = window.innerWidth <= 599;
             console.log(this.isMobile);
+            if(!this.isMobile){
+                this.addAnimations();
+            } else {
+                this.removeAnimations();
+            }
         }
 
         isMobileDevice();
         window.addEventListener('resize', isMobileDevice);
     }
 
-    initCursor() {
-        const cursor = this.cursor;
-        const cursorOnMouseMove = (e) => {
-            gsap.to(cursor, {
-                x: e.clientX,
-                y: e.clientY,
-                ease: 'power1.in',
-                duration: 0.01,
-            });
-        }
+    addAnimations(){
+        console.log('add');
+        this.cursor.addListeners();
+        this.circles.addListeners();
+        this.opportunities.addListeners();
+    }
 
-        window.addEventListener('mousemove', cursorOnMouseMove);
+    removeAnimations(){
+        console.log('remove');
+        this.cursor.removeListeners();
+        this.circles.removeListeners();
+        this.opportunities.removeListeners();
+    }
+
+    initCursor() {
+        
     }
 
     initCircles() {

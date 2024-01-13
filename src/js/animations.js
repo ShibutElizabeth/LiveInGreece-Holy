@@ -55,20 +55,16 @@ export class Animations {
         const rotateOnMouseMove = (i, x, y) => {
             const arrow = this.circleArrows[i];
             const cover = this.circleCovers[i];
+            const circle = document.querySelector('.js-circle-yellow');
             const angle = 180 + Math.atan2(y, x) * (180 / Math.PI);
             arrow.style.transform = `scale(0.2) rotate(${angle}deg)`;
+            circle.style.transform = `rotate(${angle}deg)`;
 
-            // gsap.to(cover, {
-            //     x: x * 0.15,
-            //     y: y * 0.15,
-            //     duration: 0.1,
-            // });
-            // gsap.to(arrow, {
-            //     x: x * 0.15,
-            //     y: y * 0.15,
-            //     scale: 0.2,
-            //     duration: 0.1,
-            // });
+            gsap.to(cover, {
+                x: x * 0.15,
+                y: y * 0.15,
+                duration: 0.1,
+            });
         }
 
         this.circleCovers.forEach((cover) => {

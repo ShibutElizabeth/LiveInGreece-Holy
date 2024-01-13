@@ -167,10 +167,14 @@ section {
                     top: 0;
                     left: 0;
                     z-index: 2;
+                    transform-box: fill-box;
 
                     path{
                         transform-origin: center center !important;
                         transform: scale(0.2);
+                    }
+                    circle{
+                        transform-origin: center;
                     }
                 }
 

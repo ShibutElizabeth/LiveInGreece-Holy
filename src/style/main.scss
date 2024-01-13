@@ -14,19 +14,23 @@ body {
     cursor: none !important;
     // overscroll-behavior: none;
 
-    a{
+    a {
         text-decoration: none;
         margin: 0;
         padding: 0;
         color: inherit;
         cursor: none !important;
-
-        &:active{
+        &:active {
             color: $cta;
         }
     }
 
-    h1, h2, h3, h4, h5, p{
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p {
         margin: 0;
         padding: 0;
         cursor: none !important;
@@ -48,11 +52,11 @@ section {
     position: relative;
 }
 
-.no-scroll{
+.no-scroll {
     overflow: hidden !important;
 }
 
-.cursor{
+.cursor {
     position: fixed;
     top: 0;
     left: 0;
@@ -63,11 +67,11 @@ section {
     z-index: 101;
     border: 0.5px solid $darker;
     transform: translate(-12px, -12px);
-
-    @include phone{
+    
+    @include phone {
         display: none;
     }
-    
+
 }
 
 .navbar-box {
@@ -82,57 +86,57 @@ section {
     align-items: center;
     font-size: calc(1rem + 0.2vw);
 
-    @include phone{
+    @include phone {
         font-size: 1.5rem;
     }
 
-    .navbar{
+    .navbar {
         width: 95.56vw;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
 
-        @include phone{
+        @include phone {
             width: 83vw;
         }
 
-        &__logo{
+        &__logo {
             color: $lightest;
             text-transform: uppercase;
             transition: color 0.3s ease;
             mix-blend-mode: multiply;
 
-            &:hover{
+            &:hover {
                 color: $cta;
             }
 
-            @include tablet{
-                &:hover{
+            @include tablet {
+                &:hover {
                     color: $lightest;
                 }
             }
         }
 
-        &__links{
+        &__links {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
             gap: 6.46vw;
 
-            @include tablet{
+            @include tablet {
                 display: none;
             }
-    
-            &-block{
+
+            &-block {
                 display: flex;
                 flex-direction: row;
                 justify-items: flex-start;
                 align-items: center;
                 gap: 1.67vw;
 
-                .item{
+                .item {
                     font-family: Helvetica;
                     font-size: calc(1rem + 0.2vw);
                     font-style: normal;
@@ -141,21 +145,21 @@ section {
                     color: $lightest;
                     transition: color 0.3s ease;
                     mix-blend-mode: multiply;
-                    
-                    &_upper{
+
+                    &_upper {
                         text-transform: uppercase;
                     }
 
-                    &_nohover{
+                    &_nohover {
                         pointer-events: none;
                     }
 
-                    &:hover{
+                    &:hover {
                         color: $cta;
                     }
 
-                    @include tablet{
-                        &:hover{
+                    @include tablet {
+                        &:hover {
                             color: $lightest;
                         }
                     }
@@ -163,17 +167,17 @@ section {
             }
         }
 
-        &__burger{
+        &__burger {
             position: relative;
             display: none;
             flex-direction: column;
             gap: 8px;
 
-            @include tablet{
+            @include tablet {
                 display: flex;
             }
 
-            &-item{
+            &-item {
                 width: 30px;
                 height: 2px;
                 background-color: $lightest;
@@ -183,7 +187,7 @@ section {
     }
 }
 
-.menu{
+.menu {
     background-color: $darker;
     width: 100vw;
     height: 100vh;
@@ -196,11 +200,11 @@ section {
     gap: 20px;
     transform: translateY(-100%);
 
-    @include tablet{
+    @include tablet {
         display: flex;
     }
 
-    &__item{
+    &__item {
         font-family: Helvetica;
         font-size: 2.125rem;
         font-style: normal;
@@ -209,47 +213,47 @@ section {
         color: $lightest;
         opacity: 0;
 
-        &:nth-child(5){
+        &:nth-child(5) {
             margin-top: 20px;
         }
 
-        &_upper{
+        &_upper {
             text-transform: uppercase;
             font-weight: 800;
         }
 
-        &:active{
+        &:active {
             color: $cta;
         }
     }
 }
 
-.ideas{
+.ideas {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     padding-top: 96px;
 
-    @include phone{
+    @include phone {
         padding-top: 75px;
     }
 
-    &__row{
+    &__row {
         width: 95.56vw;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
 
-        @include phone{
+        @include phone {
             flex-direction: column;
             align-items: center;
             width: 83vw;
             gap: 20px;
 
-            &:nth-child(2){
-                .rect{
-                    &:nth-child(3){
+            &:nth-child(2) {
+                .rect {
+                    &:nth-child(3) {
                         display: flex;
                         justify-content: flex-end;
                     }
@@ -257,30 +261,30 @@ section {
             }
         }
 
-        .rect{
+        .rect {
             width: 30.97vw;
             height: 30.97vw;
             background-color: transparent;
 
-            &:nth-child(1){
+            &:nth-child(1) {
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
             }
 
-            @include tablet{
-                &:nth-child(2){
+            @include tablet {
+                &:nth-child(2) {
                     display: flex;
                     justify-content: center;
                     flex-direction: column;
                 }
             }
 
-            @include phone{
+            @include phone {
                 width: 83vw;
                 height: fit-content;
 
-                &:nth-child(2){
+                &:nth-child(2) {
                     order: 3;
                     display: flex;
                     justify-content: flex-end;
@@ -288,22 +292,22 @@ section {
                 }
             }
 
-            &__title{
+            &__title {
                 color: $light;
                 font-family: Helvetica;
                 font-size: 6.67vw;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 1; /* 100% */
+                line-height: 1;
                 letter-spacing: -1.92px;
                 margin-bottom: 25px;
 
-                @include phone{
+                @include phone {
                     font-size: 18vw;
                 }
             }
 
-            &__circle{
+            &__circle {
                 position: relative;
                 border-radius: 50%;
                 overflow: hidden;
@@ -311,56 +315,57 @@ section {
                 height: 100%;
                 display: flex;
 
-                @include phone{
+                @include phone {
                     width: 54vw;
                     height: 54vw;
                 }
 
-                &-cover{
+                &-cover {
                     position: absolute;
                     top: 0;
                     left: 0;
                     z-index: 2;
                     transform-box: fill-box;
 
-                    @include phone{
+                    @include phone {
                         display: none;
                     }
 
-                    path{
+                    path {
                         transform-origin: center center !important;
                         transform: scale(0.2);
                     }
-                    circle{
+
+                    circle {
                         transform-origin: center;
                     }
                 }
 
-                &-arrow{
+                &-arrow {
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
                     z-index: 3;
 
-                    @include phone{
+                    @include phone {
                         display: none;
                     }
                 }
             }
 
-            &__textblock{
+            &__textblock {
                 padding: 0.694vw;
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
 
-                @include phone{
+                @include phone {
                     align-items: center;
                     padding-top: 30px;
                 }
 
-                &-text{
+                &-text {
                     color: $lightest;
                     font-family: Helvetica;
                     font-size: 1.125rem;
@@ -368,17 +373,17 @@ section {
                     font-weight: 400;
                     line-height: 1.44;
 
-                    @include tablet{
+                    @include tablet {
                         font-size: 0.7rem;
                     }
 
-                    @include phone{
+                    @include phone {
                         font-size: 1.125rem;
                         text-align: center;
                     }
                 }
 
-                &-button{
+                &-button {
                     width: fit-content;
                     border-radius: 37px;
                     background: $cta;
@@ -389,45 +394,44 @@ section {
                     transition: all 0.3s ease;
                     cursor: none;
                     border: none;
-                    
 
-                    img{
+                    img {
                         transition: all 0.3s ease;
                         pointer-events: none;
                     }
 
-                    p{
+                    p {
                         pointer-events: none;
                     }
 
-
-                    &:hover{
+                    &:hover {
                         img {
                             transform: rotate(45deg);
                         }
                     }
 
-                    &:active{
+                    &:active {
                         color: $darker !important;
                     }
 
-                    &:disabled{
+                    &:disabled {
                         opacity: 0.3;
                     }
 
-                    @include tablet{
+                    @include tablet {
                         font-size: 0.7rem;
-                        &:hover{
-                            img{
+
+                        &:hover {
+                            img {
                                 transform: none;
                             }
                         }
                     }
 
-                    @include phone{
+                    @include phone {
                         padding: 12px 34px;
 
-                        p{
+                        p {
                             font-size: 1.2rem;
                         }
 
@@ -437,7 +441,7 @@ section {
         }
     }
 
-    &__decoration{
+    &__decoration {
         position: absolute;
         width: 80%;
         height: fit-content;
@@ -445,59 +449,63 @@ section {
         z-index: -1;
         top: 20%;
         left: -18%;
+        -webkit-transform: translateX(-50%) scale(1.5, 1.8) rotate3d(0.3, 1.4, 3.3, 38deg);
+        -moz-transform: translateX(-50%) scale(1.5, 1.8) rotate3d(0.3, 1.4, 3.3, 38deg);
+        -ms-transform: translateX(-50%) scale(1.5, 1.8) rotate3d(0.3, 1.4, 3.3, 38deg);
+        -o-transform: translateX(-50%) scale(1.5, 1.8) rotate3d(0.3, 1.4, 3.3, 38deg);
         transform: translateX(-50%) scale(1.5, 1.8) rotate3d(0.3, 1.4, 3.3, 38deg);
 
-        @include phone{
+        @include phone {
             display: initial;
         }
     }
 }
 
-.opportunities{
+.opportunities {
     padding-top: 64px;
     padding-bottom: 54px;
     display: flex;
     flex-direction: row;
     justify-content: center;
 
-    &__container{
+    &__container {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 96.56vw;
         gap: 96px;
 
-        @include phone{
+        @include phone {
             width: 83vw;
             gap: 76px;
         }
 
-        &-title{
+        &-title {
             width: 100%;
-            
-            h2{
+
+            h2 {
                 max-width: 60.76vw;
                 color: $light;
                 font-family: Helvetica;
                 font-size: 6.67vw;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 1; /* 100% */
+                line-height: 1;
                 letter-spacing: -1.92px;
 
-                @include phone{
+                @include phone {
                     font-size: 13vw;
                 }
             }
         }
 
-        &-items{
+        &-items {
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 48px;
 
-            .item{
+            .item {
                 width: 100%;
                 position: relative;
                 display: flex;
@@ -506,7 +514,7 @@ section {
                 align-items: center;
                 // pointer-events: none;
 
-                &__line{
+                &__line {
                     width: 100%;
                     height: 2px;
                     background-color: $light;
@@ -517,15 +525,15 @@ section {
 
                 }
 
-                &__name{
+                &__name {
                     width: 23.47vw;
                     position: relative;
                     height: 46px;
                     display: flex;
                     align-items: center;
                     padding: 0 8px;
-                    
-                    &::after{
+
+                    &::after {
                         content: '';
                         width: 100%;
                         height: 100%;
@@ -534,18 +542,22 @@ section {
                         left: 0;
                         background-color: $cta;
                         transform-origin: left center;
+                        -webkit-transform: scaleX(0);
+                        -moz-transform: scaleX(0);
+                        -ms-transform: scaleX(0);
+                        -o-transform: scaleX(0);
                         transform: scaleX(0);
                         transition: all 0.3s ease;
                         z-index: -1;
                     }
 
-                    a, p{
+                    a, p {
                         color: $light;
                         font-family: Helvetica;
                         font-size: 1.5rem;
                         font-style: normal;
                         font-weight: 400;
-                        line-height: 1.33; /* 133.333% */
+                        line-height: 1.33;
                         letter-spacing: -0.48px;
                         text-transform: uppercase;
                         z-index: 1;
@@ -554,52 +566,61 @@ section {
                     }
                 }
 
-                &__arrow{
+                &__arrow {
                     width: 1.38vw;
                     height: 1.38vw;
                     min-width: 20px;
                     min-height: 20px;
 
-                    path{
+                    path {
                         fill: $light;
                         transition: all 0.3s ease;
                     }
-                    
+
                 }
 
-                &:hover{
-                    .item__line{
+                &:hover {
+                    .item__line {
                         background-color: $cta;
                     }
 
-                    .item__name::after{
+                    .item__name::after {
+                        -webkit-transform: scaleX(1);
+                        -moz-transform: scaleX(1);
+                        -ms-transform: scaleX(1);
+                        -o-transform: scaleX(1);
                         transform: scaleX(1);
+
                     }
 
-                    .item__name a, p{
+                    .item__name a, p {
                         color: $darker;
                     }
 
-                    .item__arrow path{
+                    .item__arrow path {
                         fill: $cta;
                     }
                 }
 
-                @include phone{
-                    &:hover{
-                        .item__line{
+                @include phone {
+                    &:hover {
+                        .item__line {
                             background-color: $light;
                         }
-    
-                        .item__name::after{
+
+                        .item__name::after {
+                            -webkit-transform: scaleX(0);
+                            -moz-transform: scaleX(0);
+                            -ms-transform: scaleX(0);
+                            -o-transform: scaleX(0);
                             transform: scaleX(0);
                         }
-    
-                        .item__name a, p{
+
+                        .item__name a, p {
                             color: $light;
                         }
-    
-                        .item__arrow path{
+
+                        .item__arrow path {
                             fill: $light;
                         }
                     }
@@ -607,5 +628,5 @@ section {
             }
         }
     }
-    
+
 }

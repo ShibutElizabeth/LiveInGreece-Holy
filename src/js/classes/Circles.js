@@ -8,15 +8,11 @@ export class Circles {
         this.items = document.querySelectorAll('.js-circle');
         this.covers = document.querySelectorAll('.js-circle-mask');
         this.arrows = document.querySelectorAll('.js-circle-arrow');
-        this.svgs = document.querySelectorAll('.rect__circle-cover');
         this.cursor = _cursor;
         this.remove = false;
         this.covers.forEach((cover) => {
             gsap.set(cover, {scale: 0});
         });
-        this.svgs.forEach((el) => {
-            gsap.set(el, { opacity: 1});
-        })
         this.setDecoration();
     }
 

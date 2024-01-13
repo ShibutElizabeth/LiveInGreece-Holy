@@ -326,7 +326,6 @@ section {
                     left: 0;
                     z-index: 2;
                     transform-box: fill-box;
-                    opacity: 0;
 
                     @include phone {
                         display: none;

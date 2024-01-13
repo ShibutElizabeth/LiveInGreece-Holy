@@ -1,4 +1,5 @@
 @import './variables';
+@import './mixins';
 
 body {
     margin: 0;
@@ -73,6 +74,10 @@ section {
         justify-content: space-between;
         align-items: center;
 
+        @include phone{
+            width: 83vw;
+        }
+
         &__logo{
             color: $lightest;
             text-transform: uppercase;
@@ -90,6 +95,10 @@ section {
             align-items: center;
             justify-content: space-between;
             gap: 6.46vw;
+
+            @include tablet{
+                display: none;
+            }
     
             &-block{
                 display: flex;
@@ -132,17 +141,56 @@ section {
     gap: 20px;
     padding-top: 96px;
 
+    @include phone{
+        padding-top: 75px;
+    }
+
     &__row{
         width: 95.56vw;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
 
+        @include phone{
+            flex-direction: column;
+            align-items: center;
+            width: 83vw;
+            gap: 20px;
+
+            &:nth-child(2){
+                .rect{
+                    &:nth-child(3){
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                }
+            }
+        }
 
         .rect{
             width: 30.97vw;
             height: 30.97vw;
             background-color: transparent;
+
+            @include tablet{
+                &:nth-child(2){
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                }
+            }
+
+            @include phone{
+                width: 83vw;
+                height: fit-content;
+
+                &:nth-child(2){
+                    order: 3;
+                    display: flex;
+                    justify-content: flex-end;
+                    flex-direction: row;
+                }
+            }
 
             &__title{
                 color: $light;
@@ -152,6 +200,10 @@ section {
                 font-weight: 400;
                 line-height: 1; /* 100% */
                 letter-spacing: -1.92px;
+
+                @include phone{
+                    font-size: 18vw;
+                }
             }
 
             &__circle{
@@ -162,12 +214,21 @@ section {
                 height: 100%;
                 display: flex;
 
+                @include phone{
+                    width: 54vw;
+                    height: 54vw;
+                }
+
                 &-cover{
                     position: absolute;
                     top: 0;
                     left: 0;
                     z-index: 2;
                     transform-box: fill-box;
+
+                    @include phone{
+                        display: none;
+                    }
 
                     path{
                         transform-origin: center center !important;
@@ -184,6 +245,10 @@ section {
                     left: 50%;
                     transform: translate(-50%, -50%);
                     z-index: 3;
+
+                    @include phone{
+                        display: none;
+                    }
                 }
             }
 
@@ -193,6 +258,10 @@ section {
                 flex-direction: column;
                 gap: 24px;
 
+                @include phone{
+                    align-items: center;
+                }
+
                 &-text{
                     color: $lightest;
                     font-family: Helvetica;
@@ -200,6 +269,15 @@ section {
                     font-style: normal;
                     font-weight: 400;
                     line-height: 1.44;
+
+                    @include tablet{
+                        font-size: 0.7rem;
+                    }
+
+                    @include phone{
+                        font-size: 1.125rem;
+                        text-align: center;
+                    }
                 }
 
                 &-button{
@@ -216,11 +294,21 @@ section {
                         transition: all 0.3s ease;
                     }
 
-                    &:hover{
+                    @include tablet{
+                        font-size: 0.7rem;
+                    }
 
+                    @include phone{
+                        padding: 12px 34px;
+
+                        p{
+                            font-size: 1.2rem;
+                        }
+                    }
+
+                    &:hover{
                         img {
                             transform: rotate(45deg);
-                            
                         }
                     }
                 }
@@ -243,6 +331,11 @@ section {
         width: 96.56vw;
         gap: 96px;
 
+        @include phone{
+            width: 83vw;
+            gap: 76px;
+        }
+
         &-title{
             width: 100%;
             
@@ -255,6 +348,10 @@ section {
                 font-weight: 400;
                 line-height: 1; /* 100% */
                 letter-spacing: -1.92px;
+
+                @include phone{
+                    font-size: 13vw;
+                }
             }
         }
 
@@ -281,6 +378,7 @@ section {
                     top: 0;
                     left: 0;
                     transition: all 0.3s ease;
+
                 }
 
                 &__name{
@@ -348,6 +446,26 @@ section {
 
                     .item__arrow path{
                         fill: $cta;
+                    }
+                }
+
+                @include phone{
+                    &:hover{
+                        .item__line{
+                            background-color: $light;
+                        }
+    
+                        .item__name::after{
+                            transform: scaleX(0);
+                        }
+    
+                        .item__name a, p{
+                            color: $light;
+                        }
+    
+                        .item__arrow path{
+                            fill: $light;
+                        }
                     }
                 }
             }

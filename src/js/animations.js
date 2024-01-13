@@ -10,9 +10,21 @@ export class Animations {
         this.circleArrows = document.querySelectorAll('.js-circle-arrow');
         this.oppItems = document.querySelectorAll('.js-opp-item');
         this.cursor = document.querySelector('#cursor');
+        this.isMobile = false;
+        this.windowOnResize();
         this.initCursor();
         this.initCircles();
         this.initOppItems();
+    }
+
+    windowOnResize() {
+        const isMobileDevice = () => {
+            this.isMobile = window.innerWidth <= 599;
+            console.log(this.isMobile);
+        }
+
+        isMobileDevice();
+        window.addEventListener('resize', isMobileDevice);
     }
 
     initCursor() {

@@ -5,7 +5,7 @@ export class Cursor{
         this.instance = document.querySelector('#cursor');
     }
 
-    cursorOnMouseMove = (e) => {
+    onMouseMove = (e) => {
         const cursor = this.instance;
         gsap.to(cursor, {
             x: e.clientX,
@@ -21,10 +21,10 @@ export class Cursor{
     }
 
     addListeners = () => {
-        window.addEventListener('mousemove', this.cursorOnMouseMove.bind(this));
+        window.addEventListener('mousemove', this.onMouseMove.bind(this));
     }
 
     removeListeners = () => {
-        window.removeEventListener('mousemove', this.cursorOnMouseMove.bind(this));
+        window.removeEventListener('mousemove', this.onMouseMove.bind(this));
     }
 }

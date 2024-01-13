@@ -4,7 +4,6 @@ export class Links{
     constructor(_cursor){
         this.items = document.querySelectorAll('.js-link-item');
         this.cursor = _cursor;
-        console.log(this.items)
     }
 
     onHover = () => {

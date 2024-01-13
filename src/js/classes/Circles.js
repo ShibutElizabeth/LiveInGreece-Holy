@@ -13,6 +13,24 @@ export class Circles {
         this.covers.forEach((cover) => {
             gsap.set(cover, {scale: 0});
         });
+        this.setDecoration();
+    }
+
+    addListeners = () => {
+        this.remove = false;
+        this.items.forEach((item, i) => {
+            const module = {
+                item: item,
+                cover: this.covers[i],
+                arrow: this.arrows[i],
+                cursor: this.cursor
+            }
+            this.itemListener(module, this.onHover, this.onLeave, this.rotateOnMouseMove);
+        });
+    }
+
+    removeListeners = () => {
+        this.remove = true;
     }
 
     onHover = (module) => {
@@ -49,23 +67,6 @@ export class Circles {
             y: y * 0.15,
             duration: 0.1,
         });
-    }
-
-    addListeners = () => {
-        this.remove = false;
-        this.items.forEach((item, i) => {
-            const module = {
-                item: item,
-                cover: this.covers[i],
-                arrow: this.arrows[i],
-                cursor: this.cursor
-            }
-            this.itemListener(module, this.onHover, this.onLeave, this.rotateOnMouseMove);
-        });
-    }
-
-    removeListeners = () => {
-        this.remove = true;
     }
 
     itemListener = (module, onHover, onLeave, onMouseMove) => {
@@ -128,4 +129,10 @@ export class Circles {
         
     };
 
+    setDecoration = () => {
+        const decoration = document.querySelector('.js-decoration');
+        gsap.set(decoration, {
+            transform: 'translateX(-50%) scale(1.5, 1.8) rotate3d(0.3, 1.4, 3.3, 38deg)',
+        });
+    }
 }

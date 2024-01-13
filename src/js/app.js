@@ -4,5 +4,9 @@ const sayHello = () => {
   console.log("HELLO");
 }
 
-sayHello();
-const animations = new Animations();
+
+window.onload(() => {
+  sayHello();
+  const animations = new Animations();
+})
+

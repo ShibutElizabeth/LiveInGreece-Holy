@@ -327,6 +327,10 @@ section {
                         display: none;
                     }
 
+                    svg{
+                        transform: scale(0);
+                    }
+
                     path{
                         transform-origin: center center !important;
                         transform: scale(0.2);

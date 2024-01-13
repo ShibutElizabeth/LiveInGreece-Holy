@@ -74,7 +74,6 @@ export class Circles {
 
         const windowOnMouseMove = (e) => {
             if(this.remove){
-                console.log('checked');
                 window.removeEventListener("mousemove", windowOnMouseMove);
             }
             // cursor

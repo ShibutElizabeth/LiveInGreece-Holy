@@ -328,7 +328,9 @@ section {
                     }
 
                     svg{
-                        transform: scale(0);
+                        mask{
+                            transform: scale(0);
+                        }
                     }
 
                     path{

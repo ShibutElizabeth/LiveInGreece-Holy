@@ -315,9 +315,16 @@ section {
                 height: 100%;
                 display: flex;
 
+                img{
+                    border-radius: 50%;
+                    width: 100%;
+                    height: auto;
+                }
+
                 @include phone {
                     width: 54vw;
                     height: 54vw;
+                    overflow: visible;
                 }
 
                 &-cover {
@@ -328,7 +335,9 @@ section {
                     transform-box: fill-box;
 
                     @include phone {
-                        display: none;
+                        position: absolute;
+                        left: 38%;
+                        transform: scale(0.5);
                     }
 
                     path {
@@ -338,18 +347,6 @@ section {
 
                     circle {
                         transform-origin: center;
-                    }
-                }
-
-                &-arrow {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    z-index: 3;
-
-                    @include phone {
-                        display: none;
                     }
                 }
             }

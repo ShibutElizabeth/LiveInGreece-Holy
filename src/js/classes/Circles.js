@@ -10,9 +10,6 @@ export class Circles {
         this.arrows = document.querySelectorAll('.js-circle-arrow');
         this.cursor = _cursor;
         this.remove = false;
-        this.covers.forEach((cover) => {
-            gsap.set(cover, {scale: 0});
-        });
     }
 
     onHover = (module) => {
@@ -53,6 +50,9 @@ export class Circles {
 
     addListeners = () => {
         this.remove = false;
+        this.covers.forEach((cover) => {
+            gsap.set(cover, {scale: 0});
+        });
         this.items.forEach((item, i) => {
             const module = {
                 item: item,
@@ -66,6 +66,9 @@ export class Circles {
 
     removeListeners = () => {
         this.remove = true;
+        this.covers.forEach((cover) => {
+            gsap.set(cover, {scale: 1});
+        });
     }
 
     itemListener = (module, onHover, onLeave, onMouseMove) => {
@@ -124,8 +127,6 @@ export class Circles {
             }
         }
 
-        window.addEventListener("mousemove", windowOnMouseMove);
-        
+        window.addEventListener("mousemove", windowOnMouseMove);  
     };
-
 }
